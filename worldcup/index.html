@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>历届FIFA世界杯奖牌榜</title>
+<style>
+  :root {
+    --gold: #FFD700;
+    --silver: #C0C0C0;
+    --bronze: #CD7F32;
+    --bg: #0a0e27;
+    --card: #141937;
+    --text: #e8e8e8;
+    --accent: #4fc3f7;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+  header {
+    text-align: center;
+    padding: 40px 20px 20px;
+    background: linear-gradient(135deg, #1a237e 0%, #0d47a1 50%, #01579b 100%);
+    border-bottom: 3px solid var(--gold);
+  }
+  header h1 { font-size: 2.2em; margin-bottom: 8px; }
+  header h1 span { color: var(--gold); }
+  header p { color: #aaa; font-size: 1em; }
+  .tabs {
+    display: flex; justify-content: center; gap: 12px;
+    padding: 20px; flex-wrap: wrap;
+  }
+  .tab {
+    padding: 10px 24px; border-radius: 8px; cursor: pointer;
+    background: var(--card); border: 1px solid #333;
+    color: var(--text); font-size: 0.95em; transition: all .2s;
+  }
+  .tab:hover, .tab.active { background: #1a3a6a; border-color: var(--accent); color: var(--accent); }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px 40px; }
+  table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; }
+  thead th {
+    background: #1a237e; padding: 14px 12px; text-align: center;
+    font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px;
+  }
+  tbody tr { border-bottom: 1px solid #1e2a4a; transition: background .15s; }
+  tbody tr:hover { background: #1a2a50; }
+  td { padding: 12px; text-align: center; font-size: 0.95em; }
+  td:first-child { font-weight: bold; font-size: 1.1em; }
+  td:nth-child(2) { text-align: left; }
+  .flag { margin-right: 6px; font-size: 1.3em; }
+  .medal { display: inline-block; width: 26px; height: 26px; border-radius: 50%;
+    line-height: 26px; font-size: 0.8em; font-weight: bold; color: #111; }
+  .gold-m { background: var(--gold); }
+  .silver-m { background: var(--silver); }
+  .bronze-m { background: var(--bronze); }
+  .rank-1 td:first-child { color: var(--gold); }
+  .rank-2 td:first-child { color: var(--silver); }
+  .rank-3 td:first-child { color: var(--bronze); }
+  .section-title { font-size: 1.4em; margin: 30px 0 16px; color: var(--accent); border-left: 4px solid var(--accent); padding-left: 12px; }
+  .history-card {
+    display: grid; grid-template-columns: 80px 1fr 1fr 1fr 1fr;
+    padding: 12px; border-bottom: 1px solid #1e2a4a; align-items: center;
+    transition: background .15s;
+  }
+  .history-card:hover { background: #1a2a50; }
+  .history-card .year { font-weight: bold; color: var(--gold); font-size: 1.05em; }
+  .history-card .host { color: #aaa; font-size: 0.85em; }
+  .history-grid { background: var(--card); border-radius: 12px; overflow: hidden; }
+  .history-header {
+    display: grid; grid-template-columns: 80px 1fr 1fr 1fr 1fr;
+    padding: 14px 12px; background: #1a237e; font-size: 0.85em;
+    text-transform: uppercase; letter-spacing: 1px; font-weight: bold;
+  }
+  .winner-tag { color: var(--gold); font-weight: bold; }
+  .runner-tag { color: var(--silver); }
+  .third-tag { color: var(--bronze); }
+  footer { text-align: center; padding: 30px; color: #555; font-size: 0.85em; }
+  @media (max-width: 700px) {
+    header h1 { font-size: 1.4em; }
+    .history-card, .history-header { grid-template-columns: 60px 1fr 1fr; }
+    .history-card > :nth-child(4), .history-card > :nth-child(5),
+    .history-header > :nth-child(4), .history-header > :nth-child(5) { display: none; }
+    td, th { padding: 8px 6px; font-size: 0.82em; }
+  }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🏆 历届FIFA<span>世界杯</span>奖牌榜</h1>
+  <p>1930 — 2022 · 共22届</p>
+</header>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('medal')">🏅 奖牌榜总排名</div>
+  <div class="tab" onclick="showTab('history')">📜 历届赛事详情</div>
+</div>
+
+<div class="container">
+
+<!-- 奖牌榜 -->
+<div id="medal-section">
+<h2 class="section-title">各国奖牌总榜</h2>
+<table>
+<thead>
+<tr><th>排名</th><th>国家/地区</th><th>🥇 冠军</th><th>🥈 亚军</th><th>🥉 季军</th><th>殿军</th><th>总计</th></tr>
+</thead>
+<tbody>
+<tr class="rank-1"><td>1</td><td><span class="flag">🇧🇷</span>巴西</td><td>5</td><td>2</td><td>2</td><td>1</td><td>10</td></tr>
+<tr class="rank-2"><td>2</td><td><span class="flag">🇩🇪</span>德国</td><td>4</td><td>4</td><td>4</td><td>1</td><td>13</td></tr>
+<tr class="rank-3"><td>3</td><td><span class="flag">🇮🇹</span>意大利</td><td>4</td><td>2</td><td>1</td><td>1</td><td>8</td></tr>
+<tr><td>4</td><td><span class="flag">🇦🇷</span>阿根廷</td><td>3</td><td>3</td><td>0</td><td>0</td><td>6</td></tr>
+<tr><td>5</td><td><span class="flag">🇫🇷</span>法国</td><td>2</td><td>2</td><td>2</td><td>1</td><td>7</td></tr>
+<tr><td>6</td><td><span class="flag">🇺🇾</span>乌拉圭</td><td>2</td><td>0</td><td>0</td><td>3</td><td>5</td></tr>
+<tr><td>7</td><td><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>英格兰</td><td>1</td><td>0</td><td>1</td><td>1</td><td>3</td></tr>
+<tr><td>8</td><td><span class="flag">🇪🇸</span>西班牙</td><td>1</td><td>0</td><td>0</td><td>1</td><td>2</td></tr>
+<tr><td>9</td><td><span class="flag">🇳🇱</span>荷兰</td><td>0</td><td>3</td><td>1</td><td>1</td><td>5</td></tr>
+<tr><td>10</td><td><span class="flag">🇭🇺</span>匈牙利</td><td>0</td><td>2</td><td>0</td><td>0</td><td>2</td></tr>
+<tr><td>11</td><td><span class="flag">🇨🇿</span>捷克斯洛伐克</td><td>0</td><td>2</td><td>0</td><td>0</td><td>2</td></tr>
+<tr><td>12</td><td><span class="flag">🇸🇪</span>瑞典</td><td>0</td><td>1</td><td>2</td><td>1</td><td>4</td></tr>
+<tr><td>13</td><td><span class="flag">🇭🇷</span>克罗地亚</td><td>0</td><td>1</td><td>1</td><td>0</td><td>2</td></tr>
+<tr><td>14</td><td><span class="flag">🇵🇱</span>波兰</td><td>0</td><td>0</td><td>2</td><td>0</td><td>2</td></tr>
+<tr><td>15</td><td><span class="flag">🇵🇹</span>葡萄牙</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>16</td><td><span class="flag">🇧🇪</span>比利时</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>17</td><td><span class="flag">🇹🇷</span>土耳其</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>18</td><td><span class="flag">🇺🇸</span>美国</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>19</td><td><span class="flag">🇨🇱</span>智利</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>20</td><td><span class="flag">🇲🇦</span>摩洛哥</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>21</td><td><span class="flag">🇰🇷</span>韩国</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>22</td><td><span class="flag">🇧🇬</span>保加利亚</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>23</td><td><span class="flag">🇷🇺</span>苏联</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>24</td><td><span class="flag">🇦🇹</span>奥地利</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- 历届详情 -->
+<div id="history-section" class="hidden">
+<h2 class="section-title">历届赛事一览</h2>
+<div class="history-grid">
+<div class="history-header">
+  <span>年份</span><span>🥇 冠军</span><span>🥈 亚军</span><span>🥉 季军</span><span>举办地</span>
+</div>
+<div class="history-card"><span class="year">1930</span><span class="winner-tag">🇺🇾 乌拉圭</span><span class="runner-tag">🇦🇷 阿根廷</span><span class="third-tag">🇺🇸 美国</span><span class="host">🇺🇾 乌拉圭</span></div>
+<div class="history-card"><span class="year">1934</span><span class="winner-tag">🇮🇹 意大利</span><span class="runner-tag">🇨🇿 捷克斯洛伐克</span><span class="third-tag">🇩🇪 德国</span><span class="host">🇮🇹 意大利</span></div>
+<div class="history-card"><span class="year">1938</span><span class="winner-tag">🇮🇹 意大利</span><span class="runner-tag">🇭🇺 匈牙利</span><span class="third-tag">🇧🇷 巴西</span><span class="host">🇫🇷 法国</span></div>
+<div class="history-card"><span class="year">1950</span><span class="winner-tag">🇺🇾 乌拉圭</span><span class="runner-tag">🇧🇷 巴西</span><span class="third-tag">🇸🇪 瑞典</span><span class="host">🇧🇷 巴西</span></div>
+<div class="history-card"><span class="year">1954</span><span class="winner-tag">🇩🇪 西德</span><span class="runner-tag">🇭🇺 匈牙利</span><span class="third-tag">🇦🇹 奥地利</span><span class="host">🇨🇭 瑞士</span></div>
+<div class="history-card"><span class="year">1958</span><span class="winner-tag">🇧🇷 巴西</span><span class="runner-tag">🇸🇪 瑞典</span><span class="third-tag">🇫🇷 法国</span><span class="host">🇸🇪 瑞典</span></div>
+<div class="history-card"><span class="year">1962</span><span class="winner-tag">🇧🇷 巴西</span><span class="runner-tag">🇨🇿 捷克斯洛伐克</span><span class="third-tag">🇨🇱 智利</span><span class="host">🇨🇱 智利</span></div>
+<div class="history-card"><span class="year">1966</span><span class="winner-tag">🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰</span><span class="runner-tag">🇩🇪 西德</span><span class="third-tag">🇵🇹 葡萄牙</span><span class="host">🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰</span></div>
+<div class="history-card"><span class="year">1970</span><span class="winner-tag">🇧🇷 巴西</span><span class="runner-tag">🇮🇹 意大利</span><span class="third-tag">🇩🇪 西德</span><span class="host">🇲🇽 墨西哥</span></div>
+<div class="history-card"><span class="year">1974</span><span class="winner-tag">🇩🇪 西德</span><span class="runner-tag">🇳🇱 荷兰</span><span class="third-tag">🇵🇱 波兰</span><span class="host">🇩🇪 西德</span></div>
+<div class="history-card"><span class="year">1978</span><span class="winner-tag">🇦🇷 阿根廷</span><span class="runner-tag">🇳🇱 荷兰</span><span class="third-tag">🇧🇷 巴西</span><span class="host">🇦🇷 阿根廷</span></div>
+<div class="history-card"><span class="year">1982</span><span class="winner-tag">🇮🇹 意大利</span><span class="runner-tag">🇩🇪 西德</span><span class="third-tag">🇵🇱 波兰</span><span class="host">🇪🇸 西班牙</span></div>
+<div class="history-card"><span class="year">1986</span><span class="winner-tag">🇦🇷 阿根廷</span><span class="runner-tag">🇩🇪 西德</span><span class="third-tag">🇫🇷 法国</span><span class="host">🇲🇽 墨西哥</span></div>
+<div class="history-card"><span class="year">1990</span><span class="winner-tag">🇩🇪 西德</span><span class="runner-tag">🇦🇷 阿根廷</span><span class="third-tag">🇮🇹 意大利</span><span class="host">🇮🇹 意大利</span></div>
+<div class="history-card"><span class="year">1994</span><span class="winner-tag">🇧🇷 巴西</span><span class="runner-tag">🇮🇹 意大利</span><span class="third-tag">🇸🇪 瑞典</span><span class="host">🇺🇸 美国</span></div>
+<div class="history-card"><span class="year">1998</span><span class="winner-tag">🇫🇷 法国</span><span class="runner-tag">🇧🇷 巴西</span><span class="third-tag">🇭🇷 克罗地亚</span><span class="host">🇫🇷 法国</span></div>
+<div class="history-card"><span class="year">2002</span><span class="winner-tag">🇧🇷 巴西</span><span class="runner-tag">🇩🇪 德国</span><span class="third-tag">🇹🇷 土耳其</span><span class="host">🇰🇷🇯🇵 韩国/日本</span></div>
+<div class="history-card"><span class="year">2006</span><span class="winner-tag">🇮🇹 意大利</span><span class="runner-tag">🇫🇷 法国</span><span class="third-tag">🇩🇪 德国</span><span class="host">🇩🇪 德国</span></div>
+<div class="history-card"><span class="year">2010</span><span class="winner-tag">🇪🇸 西班牙</span><span class="runner-tag">🇳🇱 荷兰</span><span class="third-tag">🇩🇪 德国</span><span class="host">🇿🇦 南非</span></div>
+<div class="history-card"><span class="year">2014</span><span class="winner-tag">🇩🇪 德国</span><span class="runner-tag">🇦🇷 阿根廷</span><span class="third-tag">🇳🇱 荷兰</span><span class="host">🇧🇷 巴西</span></div>
+<div class="history-card"><span class="year">2018</span><span class="winner-tag">🇫🇷 法国</span><span class="runner-tag">🇭🇷 克罗地亚</span><span class="third-tag">🇧🇪 比利时</span><span class="host">🇷🇺 俄罗斯</span></div>
+<div class="history-card"><span class="year">2022</span><span class="winner-tag">🇦🇷 阿根廷</span><span class="runner-tag">🇫🇷 法国</span><span class="third-tag">🇭🇷 克罗地亚</span><span class="host">🇶🇦 卡塔尔</span></div>
+</div>
+</div>
+
+</div>
+
+<footer>
+  <p>数据来源：FIFA 官方记录 · 二狗子 🐶 出品</p>
+</footer>
+
+<script>
+function showTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('medal-section').classList.toggle('hidden', tab !== 'medal');
+  document.getElementById('history-section').classList.toggle('hidden', tab !== 'history');
+}
+</script>
+</body>
+</html>
