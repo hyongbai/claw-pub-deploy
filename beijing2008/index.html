@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2008 北京奥运会奖牌榜 Top 10</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: linear-gradient(135deg, #8b0000 0%, #c41e3a 40%, #d4343a 60%, #8b0000 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .rings { font-size: 2rem; margin-bottom: 0.5rem; letter-spacing: 0.3rem; }
+        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.3rem; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+        .subtitle { font-size: 1rem; color: rgba(255,255,255,0.75); font-weight: 300; }
+        table { width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.25); border-radius: 12px; overflow: hidden; backdrop-filter: blur(8px); }
+        thead th { padding: 0.9rem 0.5rem; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.7); border-bottom: 2px solid rgba(255,255,255,0.15); text-align: center; }
+        thead th:nth-child(2) { text-align: left; }
+        tbody td { padding: 0.85rem 0.5rem; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.95rem; }
+        tbody td:nth-child(2) { text-align: left; font-weight: 600; }
+        tbody tr:hover { background: rgba(255,255,255,0.08); }
+        tbody tr:first-child { background: rgba(255,215,0,0.12); }
+        .rank { font-weight: 700; font-size: 1.1rem; }
+        .flag { font-size: 1.3rem; margin-right: 0.4rem; vertical-align: middle; }
+        .medal { font-size: 1.1rem; }
+        .gold { color: #ffd700; }
+        .silver { color: #c0c0c0; }
+        .bronze { color: #cd7f32; }
+        .total { font-weight: 700; color: #fff; }
+        footer { text-align: center; margin-top: 2rem; color: rgba(255,255,255,0.5); font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="rings">🔵🟡⚫🟢🔴</div>
+        <h1>2008 北京奥运会奖牌榜</h1>
+        <div class="subtitle">第29届夏季奥林匹克运动会 · Top 10</div>
+    </header>
+    <table>
+        <thead>
+            <tr><th>#</th><th>国家/地区</th><th>🥇</th><th>🥈</th><th>🥉</th><th>总计</th></tr>
+        </thead>
+        <tbody>
+            <tr><td class="rank">1</td><td><span class="flag">🇨🇳</span>中国</td><td class="medal gold">51</td><td class="medal silver">21</td><td class="medal bronze">28</td><td class="total">100</td></tr>
+            <tr><td class="rank">2</td><td><span class="flag">🇺🇸</span>美国</td><td class="medal gold">36</td><td class="medal silver">39</td><td class="medal bronze">37</td><td class="total">112</td></tr>
+            <tr><td class="rank">3</td><td><span class="flag">🇷🇺</span>俄罗斯</td><td class="medal gold">24</td><td class="medal silver">13</td><td class="medal bronze">23</td><td class="total">60</td></tr>
+            <tr><td class="rank">4</td><td><span class="flag">🇬🇧</span>英国</td><td class="medal gold">19</td><td class="medal silver">13</td><td class="medal bronze">19</td><td class="total">51</td></tr>
+            <tr><td class="rank">5</td><td><span class="flag">🇩🇪</span>德国</td><td class="medal gold">16</td><td class="medal silver">11</td><td class="medal bronze">14</td><td class="total">41</td></tr>
+            <tr><td class="rank">6</td><td><span class="flag">🇦🇺</span>澳大利亚</td><td class="medal gold">14</td><td class="medal silver">15</td><td class="medal bronze">17</td><td class="total">46</td></tr>
+            <tr><td class="rank">7</td><td><span class="flag">🇰🇷</span>韩国</td><td class="medal gold">13</td><td class="medal silver">11</td><td class="medal bronze">8</td><td class="total">32</td></tr>
+            <tr><td class="rank">8</td><td><span class="flag">🇯🇵</span>日本</td><td class="medal gold">9</td><td class="medal silver">8</td><td class="medal bronze">8</td><td class="total">25</td></tr>
+            <tr><td class="rank">9</td><td><span class="flag">🇮🇹</span>意大利</td><td class="medal gold">8</td><td class="medal silver">9</td><td class="medal bronze">10</td><td class="total">27</td></tr>
+            <tr><td class="rank">10</td><td><span class="flag">🇫🇷</span>法国</td><td class="medal gold">7</td><td class="medal silver">16</td><td class="medal bronze">20</td><td class="total">43</td></tr>
+        </tbody>
+    </table>
+    <footer>数据来源：国际奥委会官方记录</footer>
+</div>
+</body>
+</html>
